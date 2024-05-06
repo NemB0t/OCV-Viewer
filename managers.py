@@ -30,6 +30,8 @@ class CaptureManager(object):
     def frame(self):
         if self._enteredFrame and self._frame is None:
             _, self._frame = self._capture.retrieve(self._frame, self.channel)
+            if self.shouldConvertBitDepth10To8 and self._frame is not None and self._frame.dtype == numpy.uint16:
+                self._frame = (self._frame >> 2).astype(numpy.uint8)
         return self._frame
     @property
     def isWritingImage(self):
