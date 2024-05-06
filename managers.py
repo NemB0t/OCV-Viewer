@@ -3,8 +3,9 @@ import numpy
 import time
 
 class CaptureManager(object):
-    def __init__(self, capture, previewWindowManager = None,shouldMirrorPreview = False):
+    def __init__(self, capture, previewWindowManager = None,shouldMirrorPreview = False,shouldConvertBitDepth10To8 = True):
         self.previewWindowManager = previewWindowManager
+        self.shouldConvertBitDepth10To8 = shouldConvertBitDepth10To8
         self.shouldMirrorPreview = shouldMirrorPreview
         self._capture = capture
         self._channel = 0
